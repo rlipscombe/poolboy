@@ -93,14 +93,14 @@ child_spec(PoolId, PoolArgs) ->
 
 -spec child_spec(PoolId :: term(),
                  PoolArgs :: proplists:proplist(),
-                 WorkerArgs :: proplists:proplist())
+                 WorkerArgs :: any())
     -> supervisor:child_spec().
 child_spec(PoolId, PoolArgs, WorkerArgs) ->
     child_spec(PoolId, PoolArgs, WorkerArgs, tuple).
 
 -spec child_spec(PoolId :: term(),
                  PoolArgs :: proplists:proplist(),
-                 WorkerArgs :: proplists:proplist(),
+                 WorkerArgs :: any(),
                  ChildSpecFormat :: 'tuple' | 'map')
     -> supervisor:child_spec().
 child_spec(PoolId, PoolArgs, WorkerArgs, tuple) ->
@@ -120,7 +120,7 @@ start(PoolArgs) ->
     start(PoolArgs, PoolArgs).
 
 -spec start(PoolArgs :: proplists:proplist(),
-            WorkerArgs:: proplists:proplist())
+            WorkerArgs:: any())
     -> start_ret().
 start(PoolArgs, WorkerArgs) ->
     start_pool(start, PoolArgs, WorkerArgs).
@@ -132,7 +132,7 @@ start_link(PoolArgs)  ->
     start_link(PoolArgs, PoolArgs).
 
 -spec start_link(PoolArgs :: proplists:proplist(),
-                 WorkerArgs:: proplists:proplist())
+                 WorkerArgs :: any())
     -> start_ret().
 start_link(PoolArgs, WorkerArgs)  ->
     start_pool(start_link, PoolArgs, WorkerArgs).
